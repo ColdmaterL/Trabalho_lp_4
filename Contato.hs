@@ -4,25 +4,23 @@ insereContato :: [Contato] -> Contato -> [Contato]
 insereContato [] c = [c]
 insereContato (cab : cal) c
     |(name cab == name c) = c : cal
-    |otherwise = cab : insereContato c
+    |otherwise = cab : insereContato cal c
     
 removeContato :: [Contato] -> [Char] -> [Contato]
 removeContato [] c = []
 removeContato (cab : cal) c
-    |(nome cab == c) = cal
+    |(name cab == c) = cal
     |otherwise = cab : removeContato cal c
 
 buscaContato :: [Contato] -> [Char] -> Contato
 buscaContato [] c = Contato "0" 0 "0" "0"
 buscaContato (cab : cal) c
-    |(nome cab == c) = cab
+    |(name cab == c) = cab
     |otherwise = buscaContato cal c
 
-printaUnico Contato -> [Char]
-printaUnico [] = ""
-printaUnico c = name c ++ show(tel c) ++ ende c ++ relac c 
+printaUnico :: Contato -> [Char]
+printaUnico c = name c ++ " " ++ show(tel c) ++ " " ++ ende c ++ " " ++ relac c 
 
 printaContatos :: [Contato] -> [Char]
 prinaContatos [] = ""
-printaContatos (cab : cal) c
-printaContatos c = printaUnico(cab) ++ "\n" ++ printaContato(cal)
+printaContatos c = printaUnico (head c) ++ "\n" ++ printaContatos (tail c)
