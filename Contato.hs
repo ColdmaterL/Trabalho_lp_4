@@ -1,4 +1,4 @@
-data Contato = Contato{name :: [Char], tel :: Int, ende :: [Char], relac :: String}
+data Contato = Contato{name :: [Char], tel :: Int, ende :: [Char], relac :: [Char]}
 
 insereContato :: [Contato] -> Contato -> [Contato]
 insereContato [] c = [c]
