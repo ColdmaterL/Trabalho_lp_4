@@ -9,7 +9,7 @@ insereContato (cab : cal) c
 removeContato :: [Contato] -> [Char] -> [Contato]
 removeContato [] c = []
 removeContato (cab : cal) c
-    |(nome cab == nome c) = cal
+    |(nome cab == c) = cal
     |otherwise = cab : removeContato cal c
 
 buscaContato :: [Contato] -> [Char] -> Contato
