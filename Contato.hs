@@ -15,7 +15,7 @@ removeContato (cab : cal) c
 buscaContato :: [Contato] -> [Char] -> Contato
 buscaContato [] c = Contato "0" 0 "0" "0"
 buscaContato (cab : cal) c
-    |(nome cab == c)
+    |(nome cab == c) = c
     |otherwise = buscaContato cal c
 
 printaUnico Contato -> [Char]
