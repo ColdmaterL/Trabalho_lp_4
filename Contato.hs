@@ -1,21 +1,28 @@
-data Contato = Contato{name :: String, tel :: Int, ende :: String, relac :: String}
+data Contato = Contato{name :: [Char], tel :: Int, ende :: [Char], relac :: String}
 
-insereContato :: Contato -> Contato
-insereContato c = [c]
+insereContato :: [Contato] -> Contato -> [Contato]
+insereContato [] c = [c]
 insereContato (cab : cal) c
     |(name cab == name c) = c : cal
-    |(null cal) = c
     |otherwise = cab : insereContato c
     
-removeContato :: Contato -> String -> Contato
+removeContato :: [Contato] -> [Char] -> [Contato]
 removeContato [] c = [c]
 removeContato (cab : cal) c
     |(nome cab == nome c) = cal
-    |(null cal) = c
     |otherwise = cab : removeContato cal c
 
-printaUnico Contato -> String
+buscaContato :: [Contato] -> [Char] -> Contato
+buscaContato [] c = Contato "0" 0 "0" "0"
+buscaContato (cab : cal) c
+    |(nome cab == c)
+    |otherwise = buscaContato cal c
+
+printaUnico Contato -> [Char]
+printaUnico [] = ""
 printaUnico c = name c ++ show(tel c) ++ ende c ++ relac c 
 
-printaContato :: Contato -> String
-printaContato c = printaUnico(head c) ++ "\n" ++ printaContato(tail c)
+printaContatos :: [Contato] -> [Char]
+prinaContatos [] = ""
+printaContatos (cab : cal) c
+printaContatos c = printaUnico(cab) ++ "\n" ++ printaContato(cal)
